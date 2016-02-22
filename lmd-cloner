@@ -1,0 +1,15 @@
+#/bin/bash
+# libimobiledevice from github download script
+
+SITE="https://github.com/libimobiledevice"
+REPO=( "libirecovery" "usbmuxd" "libplist" "ideviceinstaller" "libimobiledevice" "sbmanager" "libusbmuxd" "idevicerestore" "libideviceactivation" "ifuse" )
+
+echo "If this script ISN'T IN IT'S OWN DIRECTORY it's going to SPAM this CURRENT directory with INSTALL FOLDERS."
+echo "ctrl-c if it's in your home directory. FINAL WARNING."
+echo -n "?"
+read MEOW;
+
+for i in "${REPO[@]}"
+do
+git clone "$SITE/$i"
+done

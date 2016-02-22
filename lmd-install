@@ -1,0 +1,22 @@
+#/bin/bash
+#libimobiledevice autoinstaller
+#run lmd first
+
+export PKG_CONFIG_PATH=/lib/pkgconfig:/usr/lib/pkgconfig:/usr/local/lib/pkgconfig:/usr/local/lib64/pkgconfig:/usr/lib64/pkgconfig:/usr/local/lib64/pkgconfig:/usr/local/lib64/pkgconfig
+
+builddir=( "libplist" "libusbmuxd" "libimobiledevice" "usbmuxd" "ifuse" "libirecovery" "ideviceinstaller" "idevicerestore" "libideviceactivation" )
+
+echo "This script needs to be in the same dir lmd was run from or it won't work."
+read MEOW;
+
+for i in "${builddir[@]}"
+do
+  cd $i
+  LD_LIBRARY_PATH=/usr/lib ./autogen.sh --prefix=/usr --exec-prefix=/usr --disable-option-checking --disable-libtool-lock --disable-dependency-tracking --with-cython
+  if [[ "$i" == "libirecovery" ]]; then
+   cp ../lmd.file.1 ./tools/Makefile
+  fi
+  make
+  sudo make install
+  cd ..
+done
