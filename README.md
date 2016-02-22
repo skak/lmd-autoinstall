@@ -4,7 +4,7 @@ lmd-autoinstall
 Automatically clone, build, and install libimobiledevice from github.com/libimobiledevice.
 
 1. Run lmd-cloner
-2. Run lmd-installer
+2. Run lmd-install
 
 I don't know if what I've created is considered correct.
 It works for me. I use Slackware 14.1.
